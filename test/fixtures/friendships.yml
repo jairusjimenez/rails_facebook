@@ -1,0 +1,9 @@
+one:
+  user: 1
+  friend: 1
+  status: MyString
+
+two:
+  user: 1
+  friend: 1
+  status: MyString

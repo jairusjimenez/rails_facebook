@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
+  get 'users/show'
 	
   devise_for :users
   resources :users
@@ -12,4 +15,6 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end 
+
+  resource :friendships, only: [:create]
 end
