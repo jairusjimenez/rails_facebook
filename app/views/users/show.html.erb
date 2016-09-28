@@ -1,1 +1,12 @@
-<h1>Users#show</h1>
+<%= provide(:title, @user.name) %>
+
+<% unless current_user == @user %>
+  <%= render partial: 'friendship/friendships_status', locals: {user: @user} %> 
+<% end %>
+
+<% if @user.posts.any? %>
+  <% @user.posts.each do |post| %>
+    <p><%= post.body %><p>
+    <%= render partial: 'likes/like_post', locals: {post: post} %>
+  <% end %>
+<% end %>

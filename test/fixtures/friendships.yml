@@ -1,9 +1,19 @@
-one:
-  user: 1
-  friend: 1
-  status: MyString
+one: 
+  user: jairus
+  friend: another
+  status: pending
 
-two:
-  user: 1
-  friend: 1
-  status: MyString
+two: 
+  user: another
+  friend: jairus
+  status: requested
+
+three:
+  user: jairus 
+  friend: foobar
+  status: accepted
+
+four: 
+  user: foobar
+  friend: jairus
+  status: accepted

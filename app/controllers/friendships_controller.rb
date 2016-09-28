@@ -1,5 +1,5 @@
-class FriendshipController < ApplicationController
-	before_action :find_friend
+class FriendshipsController < ApplicationController
+  before_action :find_friend
 
   def update 
     if current_user.requested_friends.include?(@friend)
@@ -8,7 +8,7 @@ class FriendshipController < ApplicationController
     else
       flash[:notice] = "No Friendship request"
     end
-    redirect_to users_index_path
+    redirect_to users_path
   end
 
   def destroy
@@ -24,19 +24,17 @@ class FriendshipController < ApplicationController
     else
       flash[:notice] = "No Friendship request"
     end
-    redirect_to users_index_path
+    redirect_to users_path
   end
 
   def create
-    Friendship.request(current_user, @friend)
+    Friendship.request?(current_user, @friend)
     flash[:notice] = "Friend request sent"
-    redirect_to users_index_path
+    redirect_to users_path
   end
 
   private
-
-  	def find_friend
-  		@friend = User.find(params[:friend_id])
-  	end
-
+    def find_friend
+      @friend = User.find(params[:friend_id])
+    end
 end

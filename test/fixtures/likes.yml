@@ -1,0 +1,7 @@
+one:
+  user: jairus
+  post: two
+
+two:
+  user: another
+  post: one
