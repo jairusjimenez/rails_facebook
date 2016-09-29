@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :test do
-  
+	gem 'rb-fsevent'
 end
 
 group :development, :test do
