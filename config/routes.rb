@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     unauthenticated do 
       root 'devise/sessions#new', as: :unauthenticated_root
-    end
+  end
 
   end  
 
@@ -17,13 +17,14 @@ Rails.application.routes.draw do
   resources :posts, except: [:edit, :update] do 
     resources :comments
   end
-  resources :likes, only: [:create, :destroy]
+  match 'like', to: 'likes#like', via: :post
+  match 'unlike', to: 'likes#unlike', via: :delete
 
   get 'feed', to: 'posts#index'
   
   get 'users', to: 'users#index'
 
   # get 'users/:id', to: 'users#show', as: :user
-  match 'users/:id', to: 'users#show', as: :user, via: :get
+  match 'users/:id', to: 'users#show', constraints: { id: /[^\/]+/ }, as: :user, via: :get
 
 end

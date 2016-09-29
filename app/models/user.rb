@@ -21,8 +21,17 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :commented_posts, through: :comments, source: :post
 
-  def already_likes?(post)
-  	!self.likes.find_by(post_id: post.id).nil?
+  def like!(post)
+    self.likes.create!(post_id: post.id)
+  end
+
+  def unlike!(post)
+    like = self.likes.find_by_post_id(post.id)
+    like.destroy!
+  end
+
+  def like?(post)
+    self.likes.find_by_post_id(post.id)
   end
 
   def to_param
