@@ -13,7 +13,7 @@
 </div>
 
 <% unless current_user == @user %>
-  <%= render partial: 'friendship/friendships_status', locals: {user: @user} %> 
+  <%= render partial: 'friendships/friendships_status', locals: {user: @user} %> 
 <% end %>
 
 <% if @user.posts.any? %>

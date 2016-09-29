@@ -25,6 +25,10 @@ class User < ApplicationRecord
   	!self.likes.find_by(post_id: post.id).nil?
   end
 
+  def to_param
+    name
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.id).first_or_create do |user|
       user.email = auth.info.email
