@@ -11,12 +11,11 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
 
-    # delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end  
 
-  resources :friendships, only: [:create, :update, :destroy]
+  resources :friendships, only: [:index, :create, :update, :destroy]
   resources :posts, except: [:edit, :update] do 
-    resources :comments, only: [:show, :create, :destroy]
+    resources :comments
   end
   resources :likes, only: [:create, :destroy]
 
